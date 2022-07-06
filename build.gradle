@@ -1,14 +1,18 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.1'
+	id 'org.springframework.boot' version '2.5.0'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
 
-group = 'com.weCode'
+group = 'com.sb.spring'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
@@ -28,6 +32,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
+test {
 	useJUnitPlatform()
 }
